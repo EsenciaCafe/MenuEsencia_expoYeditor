@@ -1,0 +1,9 @@
+{
+  "images": [
+    {
+      "name": "hero_sushi.jpeg",
+      "src": "./hero_sushi.jpeg",
+      "alt": "Hero Sushi"
+    }
+  ]
+}

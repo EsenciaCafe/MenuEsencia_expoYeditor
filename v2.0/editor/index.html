@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Esencia — Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen overflow-x-hidden overscroll-none">
+  <div class="max-w-5xl mx-auto p-4">
+    <header class="flex items-center justify-between">
+      <h1 class="text-2xl font-bold">Editor — Web Expo</h1>
+      <div class="text-sm text-slate-600">Estado: <span id="status">Listo</span></div>
+    </header>
+
+    <!-- Fondo -->
+    <section class="mt-4 p-4 bg-white rounded-xl shadow">
+      <h2 class="font-semibold mb-3">Fondo</h2>
+      <div class="flex flex-col gap-3 md:flex-row md:items-end">
+        <div>
+          <label class="block text-sm font-medium">Tipo</label>
+          <select id="bgType" class="mt-1 border rounded-lg px-3 py-2">
+            <option value="color">Color</option>
+            <option value="image">Imagen (URL)</option>
+          </select>
+        </div>
+        <div class="flex-1 min-w-0">
+          <label class="block text-sm font-medium">Valor</label>
+          <input id="bgValue" class="mt-1 w-full border rounded-lg px-3 py-2" placeholder="#ffffff o https://..." />
+        </div>
+        <button id="saveBg" class="mt-2 md:mt-0 px-4 py-2 rounded-lg bg-black text-white">Guardar fondo</button>
+      </div>
+    </section>
+
+    <!-- Añadir elemento -->
+    <section class="mt-4 p-4 bg-white rounded-xl shadow">
+      <h2 class="font-semibold mb-3">Añadir elemento</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <button data-add="text" class="px-4 py-2 rounded-lg border bg-slate-100 hover:bg-slate-200">Texto</button>
+        <button data-add="image" class="px-4 py-2 rounded-lg border bg-slate-100 hover:bg-slate-200">Imagen</button>
+        <button data-add="product" class="px-4 py-2 rounded-lg border bg-slate-100 hover:bg-slate-200">Producto</button>
+      </div>
+    </section>
+
+    <!-- Lista de elementos -->
+    <section class="mt-4 p-4 bg-white rounded-xl shadow">
+      <h2 class="font-semibold mb-3">Elementos en la pizarra</h2>
+      <div id="list" class="grid gap-3 overflow-x-hidden"></div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <dialog id="modal" class="rounded-xl p-0 w-full max-w-md mx-4"></dialog>
+
+  <!-- Modal Biblioteca de Imágenes -->
+  <dialog id="mediaModal" class="rounded-xl p-0 w-full max-w-md mx-4">
+    <div class="bg-white rounded-xl p-4 max-h-[80vh] overflow-auto">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-semibold">Biblioteca</h3>
+        <button id="mediaClose" class="px-3 py-1 rounded-lg border bg-white hover:bg-slate-50">Cerrar</button>
+      </div>
+      <div id="mediaGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-3"></div>
+    </div>
+  </dialog>
+
+  <script type="module" src="../shared/firebase.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

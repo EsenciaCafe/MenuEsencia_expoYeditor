@@ -1,0 +1,9 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyC3s3zwSDg4a9PawVExNlKK7OoU6ciZ8d4",
+    authDomain: "menu-expo-y-editor.firebaseapp.com",
+    projectId: "menu-expo-y-editor",
+    storageBucket: "menu-expo-y-editor.firebasestorage.app",
+    messagingSenderId: "722189403517",
+    appId: "1:722189403517:web:0914f053b2b59880a5b814",
+    measurementId: "G-PHCXWY0KRE"
+  };

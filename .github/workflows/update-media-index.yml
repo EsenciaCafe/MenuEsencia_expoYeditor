@@ -1,0 +1,32 @@
+name: Update media index
+
+on:
+  push:
+    branches: [ main ]   # ← ajusta si tu rama por defecto no es 'main' (p. ej. 'master')
+    paths:
+      - 'v2.0/media/**'
+      - 'v2.0/tools/gen_media_index.mjs'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # necesario para poder commitear cambios
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate media index
+        run: node v2.0/tools/gen_media_index.mjs
+
+      - name: Commit updated index.json (if changed)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(media): update index.json via CI"
+          file_pattern: v2.0/media/index.json
